@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
         createPatternPalette();
         setupEventListeners();
     }
+
+    function createShapes() {
+        
 // Clear existing shapes
     canvas.innerHTML = '';
     state.shapes = [];
