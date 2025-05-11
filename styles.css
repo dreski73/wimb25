@@ -70,17 +70,31 @@ h2 {
     gap: 10px;
 }
 
-.color-swatch, .pattern-swatch {
-    width: 30px;
-    height: 30px;
+/* Color swatches */
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Pattern swatches */
+.pattern-swatch {
+    width: 40px;
+    height: 40px;
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .color-swatch:hover, .pattern-swatch:hover {
     transform: scale(1.1);
+    z-index: 1;
 }
 
 .color-swatch.selected, .pattern-swatch.selected {
@@ -88,6 +102,26 @@ h2 {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Ensure SVG fills the entire swatch */
+.pattern-swatch svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Style for pattern labels */
+.pattern-label {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-size: 7px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1px 2px;
+    border-radius: 2px;
+    pointer-events: none; /* Prevents label from interfering with clicks */
+}
+
+/* Buttons (general) */
 button {
     padding: 8px 15px;
     margin: 5px;
@@ -121,7 +155,7 @@ button:hover {
 
 /* Shape styling */
 .shape {
-    stroke: #000;
+    stroke: #999;
     stroke-width: 0.5;
     transition: all 0.2s ease;
 }
@@ -134,4 +168,114 @@ button:hover {
     stroke: #ff0000;
     stroke-width: 1.5;
     stroke-dasharray: 2;
+}
+
+/* Rotation controls */
+.rotation-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.rotation-btn {
+    padding: 6px 8px;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 0 0 auto;
+    min-width: 36px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.rotation-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.rotation-btn.selected {
+    background-color: #2196F3;
+    color: white;
+    border-color: #0d8aee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .palette {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .rotation-selector {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .control-section {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .palette {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .rotation-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pattern-color-swatch {
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  border: 1px solid #999;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pattern-color-swatch:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.pattern-color-swatch.selected {
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#randomize-btn {
+    background-color: #9c27b0;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+}
+
+#randomize-btn:hover {
+    background-color: #7b1fa2;
+}
+
+.rotate-icon {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.rotate-icon svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
 }
