@@ -57,79 +57,42 @@ document.addEventListener('DOMContentLoaded', function() {
         createPatternPalette();
         setupEventListeners();
     }
-
-    // Create shapes on the canvas
-    function createShapes() {
-        const cellWidth = config.canvasWidth / config.gridDivisions.x;
-        const cellHeight = config.canvasHeight / config.gridDivisions.y;
-        
-        // Clear existing shapes
-        canvas.innerHTML = '';
-        state.shapes = [];
-        
-        // Create a grid of squares and triangles
-        for (let y = 0; y < config.gridDivisions.y; y++) {
-            for (let x = 0; x < config.gridDivisions.x; x++) {
-                const xPos = x * cellWidth;
-                const yPos = y * cellHeight;
-                
-                // Alternating pattern of squares and triangles
-                if ((x + y) % 2 === 0) {
-                    // Create square
-                    const square = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                    square.setAttribute('x', xPos);
-                    square.setAttribute('y', yPos);
-                    square.setAttribute('width', cellWidth);
-                    square.setAttribute('height', cellHeight);
-                    square.setAttribute('fill', 'white');
-                    square.classList.add('shape');
-                    square.dataset.index = state.shapes.length;
-                    
-                    canvas.appendChild(square);
-                    state.shapes.push({
-                        element: square,
-                        type: 'square',
-                        color: 'white',
-                        pattern: 'solid'
-                    });
-                } else {
-                    // Create triangle
-                    const triangle = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-                    triangle.setAttribute('points', 
-                        `${xPos},${yPos} ${xPos + cellWidth},${yPos} ${xPos},${yPos + cellHeight}`
-                    );
-                    triangle.setAttribute('fill', 'white');
-                    triangle.classList.add('shape');
-                    triangle.dataset.index = state.shapes.length;
-                    
-                    canvas.appendChild(triangle);
-                    state.shapes.push({
-                        element: triangle,
-                        type: 'triangle',
-                        color: 'white',
-                        pattern: 'solid'
-                    });
-                    
-                    // Add a second triangle to fill the cell
-                    const triangle2 = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-                    triangle2.setAttribute('points', 
-                        `${xPos + cellWidth},${yPos} ${xPos + cellWidth},${yPos + cellHeight} ${xPos},${yPos + cellHeight}`
-                    );
-                    triangle2.setAttribute('fill', 'white');
-                    triangle2.classList.add('shape');
-                    triangle2.dataset.index = state.shapes.length;
-                    
-                    canvas.appendChild(triangle2);
-                    state.shapes.push({
-                        element: triangle2,
-                        type: 'triangle',
-                        color: 'white',
-                        pattern: 'solid'
-                    });
-                }
-            }
-        }
-    }
+// Clear existing shapes
+    canvas.innerHTML = '';
+    state.shapes = [];
+    
+    // Create a background rectangle (the full tabletop)
+    const background = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    background.setAttribute('x', '0');
+    background.setAttribute('y', '0');
+    background.setAttribute('width', config.canvasWidth);
+    background.setAttribute('height', config.canvasHeight);
+    background.setAttribute('fill', 'white');
+    canvas.appendChild(background);
+    
+    // Create Triangle 1: points at (0,0), (60,0), (0,60)
+    const triangle1 = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    triangle1.setAttribute('points', '0,0 60,0 0,60');
+    triangle1.setAttribute('fill', 'white');
+    triangle1.classList.add('shape');
+    triangle1.dataset.index = state.shapes.length;
+    
+    canvas.appendChild(triangle1);
+    state.shapes.push({
+        element: triangle1,
+        type: 'triangle',
+        color: 'white',
+        pattern: 'solid'
+    });
+    
+    // Add the outline of the shape (so it's visible even when white)
+    const outline = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    outline.setAttribute('d', 'M0,0 L60,0 L0,60 Z');
+    outline.setAttribute('stroke', 'black');
+    outline.setAttribute('stroke-width', '0.5');
+    outline.setAttribute('fill', 'none');
+    canvas.appendChild(outline);
+}
 
     // Create color palette
     function createColorPalette() {
