@@ -279,3 +279,61 @@ button:hover {
   height: 16px;
   pointer-events: none;
 }
+details#tools-panel {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+details#tools-panel summary {
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Default: desktop = grid layout */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
+  gap: 10px;
+}
+
+/* On small screens: use horizontal scroll */
+@media (max-width: 600px) {
+  .palette {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .palette::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .color-swatch,
+  .pattern-color-swatch,
+  .pattern-swatch {
+    flex: 0 0 auto;
+  }
+}
+
+.palette::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.color-swatch,
+.pattern-color-swatch {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+.pattern-swatch {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+}

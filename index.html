@@ -15,39 +15,42 @@
             <svg id="canvas" viewBox="0 0 220 70" preserveAspectRatio="xMidYMid meet"></svg>
         </div>
         
-        <div class="controls">
-            <div class="control-section">
-                <h2>Colors</h2>
-                <div id="color-palette" class="palette"></div>
-            </div>
-            <div class="control-section">
-                <h2>Patterns</h2>
-                <div id="pattern-palette" class="palette"></div>
-            </div>
-            <div class="control-section">
-                <h2>Pattern Color</h2>
-                <div id="pattern-color-palette" class="palette"></div>
-            </div>
-            
+<details id="tools-panel" open>
+  <summary>🎛️ Show/Hide Tools</summary>
+  <div class="controls">
 <div class="control-section">
-  <h2>Pattern Rotation</h2>
-  <div id="rotation-control">
-    <div id="rotate-btn" class="rotate-icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2v4l3-3m-3 3a8 8 0 1 1-6.32 3.16" fill="none" stroke="black" stroke-width="2"/>
-      </svg>
+  <details open>
+    <summary>Colors</summary>
+    <div id="color-palette" class="palette"></div>
+  </details>
+</div>
+    <div class="control-section">
+      <h2>Patterns</h2>
+      <div id="pattern-palette" class="palette"></div>
+    </div>
+    <div class="control-section">
+      <h2>Pattern Color</h2>
+      <div id="pattern-color-palette" class="palette"></div>
+    </div>
+    <div class="control-section">
+      <h2>Pattern Rotation</h2>
+      <div id="rotation-control">
+        <div id="rotate-btn" class="rotate-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2v4l3-3m-3 3a8 8 0 1 1-6.32 3.16" fill="none" stroke="black" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="control-section">
+      <h2>Tools</h2>
+      <button id="randomize-btn">Randomize Design</button>
+      <button id="reset-btn">Reset Design</button>
+      <button id="save-btn">Save Design</button>
     </div>
   </div>
-</div>
-
-            </div>
-            <div class="control-section">
-                <h2>Tools</h2>
-                <button id="randomize-btn">Randomize Design</button>
-                <button id="reset-btn">Reset Design</button>
-                <button id="save-btn">Save Design</button>
-            </div>
-        </div>
+</details>
+            
 
         <div class="instructions">
             <p>Click on a shape to select it, then choose a color or pattern to apply.</p>
