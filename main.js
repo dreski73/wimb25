@@ -180,7 +180,7 @@ function setupEventListeners() {
     e.target.classList.add('selected');
   });
 
-  document.getElementById('color-palette').addEventListener('click', e => {
+  ['click', 'touchstart'].forEach(evt => document.getElementById('color-palette').addEventListener(evt, e => {
     if (!e.target.dataset.color) return;
     document.querySelectorAll('.color-swatch.selected').forEach(el => el.classList.remove('selected'));
     e.target.classList.add('selected');
@@ -189,7 +189,7 @@ function setupEventListeners() {
     applyToSelectedShape();
   });
 
-  document.getElementById('pattern-color-palette').addEventListener('click', e => {
+  ['click', 'touchstart'].forEach(evt => document.getElementById('pattern-color-palette').addEventListener(evt, e => {
     if (!e.target.dataset.color) return;
     document.querySelectorAll('.pattern-color-swatch.selected').forEach(el => el.classList.remove('selected'));
     e.target.classList.add('selected');
@@ -197,7 +197,7 @@ function setupEventListeners() {
     applyToSelectedShape();
   });
 
-  document.getElementById('pattern-palette').addEventListener('click', e => {
+  ['click', 'touchstart'].forEach(evt => document.getElementById('pattern-palette').addEventListener(evt, e => {
     const target = e.target.closest('.pattern-swatch');
     if (!target) return;
     document.querySelectorAll('.pattern-swatch.selected').forEach(el => el.classList.remove('selected'));
