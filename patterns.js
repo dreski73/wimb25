@@ -81,6 +81,7 @@ export function createBasicPattern(patternType, svgNS) {
     pattern.appendChild(tri);
   }
   break;
+
   }
 
   return pattern;
@@ -93,9 +94,9 @@ export function createCustomPattern(type, rotation, backgroundColor, patternColo
   pattern.querySelectorAll('[fill="black"]').forEach(el => el.setAttribute('fill', patternColor));
   pattern.querySelectorAll('[fill="transparent"]').forEach(el => el.setAttribute('fill', backgroundColor));
 
-  if (rotation) {
-    pattern.setAttribute('patternTransform', `rotate(${rotation} 10 10)`);
-  }
+if (rotation && type !== 'custom') {
+  pattern.setAttribute('patternTransform', `rotate(${rotation} 10 10)`);
+}
 
   const bg = document.createElementNS(svgNS, 'rect');
   bg.setAttribute('width', pattern.getAttribute('width') || '20');

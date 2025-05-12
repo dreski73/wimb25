@@ -279,8 +279,3 @@ button:hover {
   height: 16px;
   pointer-events: none;
 }
-#pattern-color-palette.palette {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-}
