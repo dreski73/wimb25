@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <style>
+  body {
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding-top: 0;
+      margin-top: 0;
+    }
+    .canvas-wrapper {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1000;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+</style>
     <div class="container">
         <h1>Tabletop Designer</h1>
         
